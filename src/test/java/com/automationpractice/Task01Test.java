@@ -24,11 +24,13 @@ import java.util.concurrent.TimeUnit;
 
 public class Task01Test {
     private final String MAIN_PAGE_URL ="http://automationpractice.com";
+    private EmailGenerator gen = new EmailGenerator("ukr.net", 8);
 
     private String myTest(WebDriver driver){
         driver.navigate().to(MAIN_PAGE_URL);
         driver.findElement(By.cssSelector("#header div.header_user_info a")).click();
-        driver.findElement(By.id("email_create")).sendKeys("463463w46@ukr.net");
+//        driver.findElement(By.id("email_create")).sendKeys("463463w46@ukr.net");
+        driver.findElement(By.id("email_create")).sendKeys(gen.getEmail());
         driver.findElement(By.id("SubmitCreate")).click();
         driver.findElement(By.id("customer_firstname")).sendKeys("John Joseph");
         driver.findElement(By.id("customer_lastname")).sendKeys("Travolta");
